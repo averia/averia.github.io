@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.Estilo1 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; }
+.title {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	
+	}
+.text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	
+	}
+.titulo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #990000;	
+	}
+.texto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #990000;	
+	}
+body {
+	background-color: #FFF;
+}
+a:link {
+	color: #CC0000;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CC0000;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+    background-color: #000000;
+	
+}
+a:active {
+	text-decoration: none;
+	color: #FFFFFF;
+    background-color: #FF0000;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px; 
+}
+
+.Estilo1Negativo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11
+	px;
+	font-style: italic;
+	color: #000000;
+	background-color: #CCCCCC;
+}
+
+.Estilo2 {
+	font-size: 18px;
+	font-family: Monaco;
+}
+body {
+	background-color: #FFF;
+}
+a:link {
+	color: #CC0000;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CC0000;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+    background-color: #000000;
+}
+a:active {
+	text-decoration: none;
+	color: #FFFFFF;
+    background-color: #FF0000;
+}
+.pantalla_completa {
+	background-image: url(imatges/sofa/controles.jpg);
+}
