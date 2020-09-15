@@ -1,0 +1,18 @@
+body {
+  background-color: #000;
+  color:#0f0;
+font-family: 'Jaldi', sans-serif;
+  *font-size: 13.0em;*/
+  *line-height: 200px;
+  text-align: center;
+}
+.counter{
+	/*resize: both;*/
+  /*overflow: auto;*/
+	*width: 100%;*/
+	color:#4ff;
+}
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
