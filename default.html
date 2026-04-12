@@ -1,16 +1,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <LINK REL="SHORTCUT ICON" HREF="imatges/icon.ico">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>gb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  #top {
+    height: 45px;
+    width: 100%;
+    border: none;
+    flex-shrink: 0;
+  }
+  #main {
+    flex-grow: 1;
+    width: 100%;
+    border: none;
+  }
+  @media only screen and (max-width: 650px) {
+    #top { height: 110px; }
+  }
+</style>
 </head>
+<body>
+  <iframe src="menu.html" name="top" id="top" title="topFrame" scrolling="no"></iframe>
+  <iframe src="main.html" name="main" id="main" title="mainFrame"></iframe>
 
-<frameset rows="38,*" cols="*" framespacing="0" frameborder="no" border="0">
-  <frame src="menu.html" name="top" scrolling="No" noresize="noresize" id="top" title="topFrame" />
-  <frame src="main.html" name="main" id="main" title="mainFrame" />
-</frameset>
-<noframes><body>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -25,4 +49,4 @@
 
 </script>
 </body>
-</noframes></html>
+</html>

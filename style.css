@@ -86,3 +86,12 @@ only screen and (max-device-width : 320px){
 	.galleryItem p, .header p {font-size: 18px;}
 	.header h1 {font-size: 70px;}
 }
+
+/* RESPONSIVE OVERRIDES */
+table {
+	max-width: 100% !important;
+}
+img, iframe, video {
+	max-width: 100% !important;
+	height: auto !important;
+}

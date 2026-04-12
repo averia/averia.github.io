@@ -87,3 +87,45 @@ a:active {
 .pantalla_completa {
 	background-image: url(imatges/sofa/controles.jpg);
 }
+
+/* RESPONSIVE IMPRESICINDIBLES */
+table {
+	max-width: 100% !important;
+}
+img, iframe, video {
+	max-width: 100% !important;
+	height: auto !important;
+}
+iframe[src*="vimeo"], iframe[src*="youtube"] {
+	aspect-ratio: 16 / 9;
+}
+select {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+@media only screen and (max-width: 650px) {
+	/* Fix menu.html table for narrow screens */
+	#form table, #form tbody, #form tr, #form th {
+		display: block;
+		width: 100% !important;
+		text-align: center;
+	}
+	#form th {
+		margin-bottom: 5px;
+	}
+	
+	/* For project pages HTML structure */
+	table, tbody, tr, td, th {
+		display: block !important;
+		width: 100% !important;
+		box-sizing: border-box;
+		margin: 0 !important;
+	}
+	.Estilo1, .text, .texto, p {
+		padding: 0 5px; /* Slight padding so text doesn't touch the very edge, but it spans almost 100% */
+	}
+	iframe[src*="vimeo"], iframe[src*="youtube"] {
+		width: 100% !important;
+	}
+}
