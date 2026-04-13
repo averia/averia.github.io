@@ -35,6 +35,106 @@
   <iframe src="menu.html" name="top" id="top" title="topFrame" scrolling="no"></iframe>
   <iframe src="main.html" name="main" id="main" title="mainFrame"></iframe>
 
+  <script type="text/javascript">
+    (function() {
+      const mainIframe = document.getElementById('main');
+      const topIframe = document.getElementById('top');
+      let projects = [];
+
+      function updateProjectList() {
+        try {
+          const select = topIframe.contentDocument.getElementById('proyectos2');
+          if (select) {
+            projects = Array.from(select.options).map(opt => opt.value);
+          }
+        } catch (e) {
+          // Cross-origin or not loaded yet
+        }
+      }
+
+      function navigate(direction) {
+        updateProjectList();
+        if (projects.length === 0) return;
+
+        try {
+          const url = new URL(mainIframe.contentWindow.location.href);
+          const path = url.pathname;
+          
+          // Extract relative path to match projects array (e.g., "proyectos/millis.html")
+          const parts = path.split('/');
+          const filename = parts.pop();
+          const folder = parts.pop();
+          
+          let normalizedCurrent = folder === 'proyectos' ? 'proyectos/' + filename : filename;
+          // Decode URL (e.g. %20 to space) for matching
+          normalizedCurrent = decodeURIComponent(normalizedCurrent);
+          
+          let currentIndex = projects.indexOf(normalizedCurrent);
+          
+          if (currentIndex !== -1) {
+            let nextIndex = currentIndex + direction;
+            if (nextIndex >= 0 && nextIndex < projects.length) {
+              const nextUrl = projects[nextIndex];
+              mainIframe.src = nextUrl;
+              
+              // Sync the select menu in the top frame
+              try {
+                const select = topIframe.contentDocument.getElementById('proyectos2');
+                if (select) {
+                  select.value = nextUrl;
+                }
+              } catch (e) {}
+            }
+          }
+        } catch (e) {
+          console.error("Navigation error", e);
+        }
+      }
+
+      let touchstartX = 0;
+      let touchendX = 0;
+      let touchstartY = 0;
+      let touchendY = 0;
+
+      function handleGesture() {
+        const thresholdX = 80;
+        const thresholdY = 50; // To avoid swiping when scrolling vertically
+        
+        const distX = touchendX - touchstartX;
+        const distY = touchendY - touchstartY;
+
+        if (Math.abs(distX) > thresholdX && Math.abs(distY) < thresholdY) {
+          if (distX < 0) {
+            // Swipe left -> Next
+            navigate(1);
+          } else {
+            // Swipe right -> Prev
+            navigate(-1);
+          }
+        }
+      }
+
+      mainIframe.addEventListener('load', function() {
+        try {
+          const doc = mainIframe.contentDocument || mainIframe.contentWindow.document;
+          
+          doc.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+            touchstartY = e.changedTouches[0].screenY;
+          }, {passive: true});
+
+          doc.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            touchendY = e.changedTouches[0].screenY;
+            handleGesture();
+          }, {passive: true});
+        } catch (e) {
+          // Might be cross-origin if external link is clicked (e.g. CV)
+        }
+      });
+    })();
+  </script>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
