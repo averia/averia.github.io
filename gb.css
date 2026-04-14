@@ -159,7 +159,7 @@ select {
 @media only screen and (min-width: 651px) {
     body:not(.menu-body) > table,
     body:not(.menu-body) > div > table {
-        width: 900px !important;
+        width: 1000px !important;
         max-width: 100% !important;
         margin: 40px auto !important;
     }
@@ -168,8 +168,8 @@ select {
 body:not(.menu-body) img:not([src*="thumbs"]), 
 body:not(.menu-body) video, 
 body:not(.menu-body) iframe {
-    width: 100% !important;
-    max-width: 900px !important;
+    width: 1000px !important;
+    max-width: 100% !important;
     height: auto !important;
     margin: 10px auto !important;
     display: block !important;
