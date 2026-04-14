@@ -28,7 +28,7 @@ body {
 	background-color: #FFF;
 }
 body:not(.menu-body) {
-	padding-top: 45px;
+	padding-top: 38px;
 }
 a:link {
 	color: #CC0000;
@@ -130,8 +130,11 @@ select {
 	table, tbody, tr, td, th {
 		display: block !important;
 		width: 100% !important;
-		box-sizing: border-box;
-		margin: 0 !important;
+	}
+	table table {
+		display: table !important;
+		width: 200px !important;
+		margin: 0 auto !important;
 	}
 	.Estilo1, .text, .texto, p {
 		padding: 0 5px; /* Slight padding so text doesn't touch the very edge, but it spans almost 100% */
@@ -145,10 +148,37 @@ select {
 		aspect-ratio: 16 / 9;
 	}
 }
-
 .menu-body {
 	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%) !important;
 	backdrop-filter: blur(8px);
 	-webkit-backdrop-filter: blur(8px);
 	background-color: transparent !important;
+}
+
+/* Desktop adjustments for project pages */
+@media only screen and (min-width: 651px) {
+    body:not(.menu-body) > table,
+    body:not(.menu-body) > div > table {
+        width: 900px !important;
+        max-width: 100% !important;
+        margin: 40px auto !important;
+    }
+}
+
+body:not(.menu-body) img:not([src*="thumbs"]), 
+body:not(.menu-body) video, 
+body:not(.menu-body) iframe {
+    width: 100% !important;
+    max-width: 900px !important;
+    height: auto !important;
+    margin: 10px auto !important;
+    display: block !important;
+}
+
+/* Keep navigation tables small and centered */
+body:not(.menu-body) table table {
+    width: auto !important;
+    max-width: 200px !important;
+    margin: 20px auto !important;
+    display: table !important;
 }
