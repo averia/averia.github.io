@@ -16,6 +16,15 @@
       eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
       if (restore) selObj.selectedIndex=0;
     }
+
+    function navigateProjects(direction) {
+      var sel = document.getElementById('proyectos2');
+      var newIndex = sel.selectedIndex + direction;
+      if (newIndex >= 0 && newIndex < sel.options.length) {
+        sel.selectedIndex = newIndex;
+        MM_jumpMenu('parent.frames[\'main\']', sel, 0);
+      }
+    }
     //-->
   </script>
   <link href="gb.css" rel="stylesheet" type="text/css" />
@@ -25,9 +34,11 @@
 <body>
   <form name="form" id="form">
     <div align="center">
-      <table width="624" border="0">
+      <table border="0" align="center">
         <tr>
-          <th width="157" align="left" scope="col"><select name="proyectos2" id="proyectos2" size="1" class="Estilo1"
+          <th scope="col"><a href="#" onclick="navigateProjects(-1); return false;" class="Estilo1" style="text-decoration:none;">&larr;</a></th>
+          <th align="left" scope="col">
+            <select name="proyectos2" id="proyectos2" size="1" class="Estilo1"
               onchange="MM_jumpMenu('parent.frames[\'main\']',this,0)">
               <option value="main.html">&lt;-----------------------&gt;</option>
               <option value="proyectos/millis.html">millis</option>
@@ -70,14 +81,15 @@
               <option value="proyectos/hb.html">hb</option>
               <option value="proyectos/mirrorvamp.html">espejo para vampiros</option>
               <option value="proyectos/espiritismo.html">espiritismo</option>
-            </select></th>
-          <th width="264" align="left" scope="col"><select name="jumpMenu" class="Estilo1" id="jumpMenu"
+            </select>
+          </th>
+          <th align="left" scope="col"><select name="jumpMenu" class="Estilo1" id="jumpMenu"
               onchange="MM_jumpMenu('parent.frames[\'main\']',this,0)">
               <option value="main.html">&lt;----------------&gt;</option>
               <option value="proyectos/orsini.html">orsini</option>
               <option value="cv.html">cv</option>
             </select></th>
-          <th width="141" scope="col">&nbsp;</th>
+          <th scope="col"><a href="#" onclick="navigateProjects(1); return false;" class="Estilo1" style="text-decoration:none;">&rarr;</a></th>
           <th width="44" scope="col"><a href="mailto: guibayo@gmail.com" target="_blank" class="style1">@</a></th>
         </tr>
       </table>
