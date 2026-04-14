@@ -27,6 +27,9 @@
 body {
 	background-color: #FFF;
 }
+body:not(.menu-body) {
+	padding-top: 45px;
+}
 a:link {
 	color: #CC0000;
 	text-decoration: none;
@@ -114,6 +117,14 @@ select {
 	#form th {
 		margin-bottom: 5px;
 	}
+	#form select {
+		font-size: 14px;
+		padding: 3px 2px;
+	}
+	#form a {
+		font-size: 16px;
+		padding: 0 4px;
+	}
 	
 	/* For project pages HTML structure */
 	table, tbody, tr, td, th {
@@ -125,9 +136,19 @@ select {
 	.Estilo1, .text, .texto, p {
 		padding: 0 5px; /* Slight padding so text doesn't touch the very edge, but it spans almost 100% */
 	}
+	body:not(.menu-body) {
+		padding-top: 110px;
+	}
 	iframe[src*="vimeo"], iframe[src*="youtube"] {
 		width: 100% !important;
 		height: auto !important;
 		aspect-ratio: 16 / 9;
 	}
+}
+
+.menu-body {
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%) !important;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	background-color: transparent !important;
 }

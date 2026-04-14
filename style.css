@@ -2,6 +2,14 @@
 	padding: 0;
 	margin: 0;
 }
+body {
+	padding-top: 45px;
+}
+@media only screen and (max-width: 630px) {
+	body {
+		padding-top: 110px;
+	}
+}
 
 /*HEADER STYLES*/
 
