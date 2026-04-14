@@ -175,10 +175,16 @@ body:not(.menu-body) iframe {
     display: block !important;
 }
 
-/* Keep navigation tables small and centered */
+/* Ensure content tables in project pages are wide */
 body:not(.menu-body) table table {
-    width: auto !important;
-    max-width: 200px !important;
+    width: 100% !important;
+    margin: 10px auto !important;
+}
+
+/* Keep ONLY specific small navigation tables small and centered */
+body:not(.menu-body) table table[width="200"] {
+    width: 200px !important;
+    max-width: 100% !important;
     margin: 20px auto !important;
     display: table !important;
 }
