@@ -5,11 +5,55 @@
 <title>sin norte</title>
 
 <link href="../gb.css" rel="stylesheet" type="text/css" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+  .content-table {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Versión desktop: vídeo e imagen más grandes */
+  @media screen and (min-width: 768px) {
+    .content-table img {
+      width: 100% !important;
+      max-width: 960px;
+      height: auto !important;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .content-table video,
+    .content-table embed,
+    .content-table iframe {
+      width: 100% !important;
+      max-width: 960px;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+      min-height: 540px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  /* Versión móvil */
+  @media screen and (max-width: 767px) {
+    .content-table img,
+    .content-table video,
+    .content-table embed,
+    .content-table iframe {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+    }
+    .content-table td {
+      box-sizing: border-box;
+    }
+  }
+</style>
 </head>
 
 <body>
-<table width="462" border="0" align="center" cellspacing="0">
+<table border="0" align="center" cellspacing="0" class="content-table">
   <tr>
     <td width="460" align="center" bgcolor="#FFFFFF" class="Estilo1"><script type="text/javascript">
 // BeginWebWidget phatfusion_slideShow: pf_slideShow1
@@ -34,13 +78,14 @@
       </script></td>
   </tr>
   <tr>
-    <td align="center" bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/sin norte/sin norte.jpg" width="450" height="300" alt="sin norte" /></td>
+    <td align="center" bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/sin norte/sin norte.jpg" alt="sin norte" /></td>
   </tr>
   <tr>
-    <td bgcolor="#FFFFFF" class="Estilo1"><table width="461" border="0" cellpadding="0" cellspacing="0">
+    <td bgcolor="#FFFFFF" class="Estilo1" align="center">
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 461px; width: 100%;">
       <tr>
         <td width="135"><p align="left" class="title">Absent north</p>
-          <p align="left" class="text">2009</span></p>
+          <p align="left" class="text">2009</p>
           <p align="left" class="text">A compass measures the capacity of disorientation in its operators via a motor and magnet. 
 The potentiometer regulates the velocity of the motor which inturn moves the magnet.
 Result Variyng between operators.</p>
@@ -58,15 +103,12 @@ Result Variyng between operators.</p>
   </tr>
   
   <tr>
-    <td align="center" valign="middle" bgcolor="#FFFFFF"><div align="center">
-      <table width="200" border="0" align="center">
-        <tr>
-          <td><span class="TabbedPanelsContent">
-            <embed src="../videos/brujula_512kb.mp4" width="320" height="256" autoplay="0" loop="True"></embed>
-          </span></td>
-        </tr>
-      </table>
-    </div></td>
+    <td align="center" valign="middle" bgcolor="#FFFFFF">
+      <video controls preload="metadata">
+        <source src="../videos/brujula_512kb.mp4" type="video/mp4" />
+        <embed src="../videos/brujula_512kb.mp4" width="320" height="256" autoplay="0" loop="True"></embed>
+      </video>
+    </td>
   </tr>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><table width="200" border="0">
@@ -94,4 +136,3 @@ Result Variyng between operators.</p>
 </script>
 </body>
 </html>
-
