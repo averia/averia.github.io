@@ -1,64 +1,145 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>cacerolada</title>
 
-<link href="../gb.css" rel="stylesheet" type="text/css" />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>cacerolada</title>
+
+  <link href="../gb.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .content-table {
+      width: 95%;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    /* Estilos para versión desktop: imágenes y vídeos más grandes */
+    @media screen and (min-width: 768px) {
+      .content-table img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100%;
+        display: block;
+      }
+
+      .content-table iframe {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+        min-height: 420px;
+        display: block;
+      }
+    }
+
+    /* Ajuste para pantallas pequeñas / móviles */
+    @media screen and (max-width: 767px) {
+
+      .content-table img,
+      .content-table iframe {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+      }
+
+      .content-table td {
+        display: block;
+        width: 100% !important;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</head>
 
 <body>
-<table width=90% border="0" align="center" cellspacing="0">
-  <tr>
-    <td bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/cacerolada/controlador.jpg" width="640" height="*" alt="controlador" /></td>
-    <td bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/cacerolada/cacerolada.gif" width="640" height="*" alt="controlador" /></td>
-  </tr>
-  <tr>
-    <td colspan="2" class="Estilo1"><p class="title">cacerolada aut&oacute;mata</p>
-      <p>2018</p>
-      <p dir="ltr"><span>Atril con generador de patrones r&iacute;tmicos accionan actuadores que golpean cacerolas y utensilios de cocina habituales.</span></p>
-      <p dir="ltr"><span>Guillem Bayo, Sergio Mill&aacute;n, Luis Gonz&aacute;lez.</span>
-      <p dir="ltr"><span>Con el apoyo de Autom&aacute;ticas 08 Medialab Prado.</span></p>
-    <p><span>&nbsp;</span></p>
+  <table border="0" align="center" cellspacing="0" class="content-table">
+    <tr>
+      <td bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/cacerolada/controlador.jpg" alt="controlador" /></td>
+      <td bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/cacerolada/cacerolada.gif" alt="controlador" /></td>
     </tr>
     <tr>
       <td colspan="2" class="Estilo1">
-      <p>En un momento hist&oacute;rico y social de tomadura de pelo tan descomunal, resulta importante armarse con humor y protestar sin el riesgo de que te saquen un ojo o deshidratarse. El atril contiene un controlador con diferentes niveles de actuaci&oacute;n: On/ Off, Kaos/ Orden, Velocidad, densidad e intensidad. El controlador cuenta con la posibilidad de cambiar de patrones para poder actuar con la cacerolada como si se tratara de una caja de ritmos.</p>
-      <p>La cacerolada est&aacute; compuesta por un mont&oacute;n de sartenes, cacerolas y utensilios t&iacute;picos de cocina. Son accionados v&iacute;a solenoides y motores DC.</p>
-     </td>
-   </tr>
-   <tr>
-     <td colspan="2" class="Estilo1">
-       <a href="https://github.com/Ttreintaysiete/cacerolada" target="_blank">repositorio</a>
-     </td>
+        <p class="title">Automated Cacerolada</p>
+        <p>2018</p>
+        <p dir="ltr"><span>A lectern equipped with a rhythmic pattern generator triggers actuators that strike everyday
+            pots, pans, and kitchen utensils.</span></p>
+        <p dir="ltr"><span>Guillem Bayo, Sergio Mill&aacute;n, Luis Gonz&aacute;lez.</span></p>
+        <p dir="ltr"><span>Con el apoyo de Autom&aacute;ticas 08 Medialab Prado.</span></p>
+        <p><span>&nbsp;</span></p>
+      </td>
     </tr>
-  <tr>
-    <td><iframe src="https://player.vimeo.com/video/456648398" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-   <td><iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/0sBzzEVzmjY?start=286" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </tr>
-  <tr>
-    <td colspan="2" align="center" bgcolor="#FFFFFF"><table width="200" border="0">
-      <tr>
-        <td align="left"><a href="reverse.html" target="main">&larr;</a></td>
-        <td align="center"><a href="../main.html" >&forall;</a></td>
-        <td align="right"><a href="parasit.html" target="main">&rarr;</a></td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-<div align="center"></div>
-<script type="text/javascript">
+    <tr>
+      <td colspan="2" class="Estilo1">
+        <p>In a historical and social moment of such colossal mockery, it becomes important to arm oneself with humor
+          and protest without the risk of losing an eye or getting dehydrated. The lectern houses a controller with
+          different operation parameters: On/Off, Chaos/Order, Speed, Density, and Intensity. The controller allows for
+          changing patterns to perform with the cacerolada as if it were a drum machine.</p>
+        <p>The setup consists of a multitude of frying pans, pots, and typical kitchen utensils. They are driven via
+          solenoids and DC motors.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="Estilo1">
+        <p class="titulo">Cacerolada aut&oacute;mata</p>
+        <p class="texto">2018</p>
+        <p class="texto">Atril con generador de patrones r&iacute;tmicos accionan actuadores que golpean cacerolas y
+          utensilios de cocina habituales.</p>
+        <p class="texto">Guillem Bayo, Sergio Mill&aacute;n, Luis Gonz&aacute;lez.</p>
+        <p class="texto">Con el apoyo de Autom&aacute;ticas 08 Medialab Prado.</p>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="Estilo1">
+        <p class="texto">En un momento hist&oacute;rico y social de tomadura de pelo tan descomunal, resulta
+          importante armarse con humor y protestar sin el riesgo de que te saquen un ojo o deshidratarse. El atril
+          contiene un controlador con
+          diferentes niveles de actuaci&oacute;n: On/ Off, Kaos/ Orden, Velocidad, densidad e intensidad. El controlador
+          cuenta con la posibilidad de cambiar de patrones para poder actuar con la cacerolada como si se tratara de una
+          caja de ritmos.</p>
+        <p class="texto">La cacerolada est&aacute; compuesta por un mont&oacute;n de sartenes, cacerolas y
+          utensilios t&iacute;picos
+          de cocina. Son accionados v&iacute;a solenoides y motores DC.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="Estilo1">
+        <a href="https://github.com/Ttreintaysiete/cacerolada" target="_blank">repositorio</a>
+      </td>
+    </tr>
+    <tr>
+      <td><iframe src="https://player.vimeo.com/video/456648398" frameborder="0" allow="autoplay; fullscreen"
+          allowfullscreen></iframe></td>
+      <td><iframe src="https://www.youtube.com/embed/0sBzzEVzmjY?start=286" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#FFFFFF">
+        <table width="200" border="0">
+          <tr>
+            <td align="left"><a href="reverse.html" target="main">&larr;</a></td>
+            <td align="center"><a href="../main.html">&forall;</a></td>
+            <td align="right"><a href="parasit.html" target="main">&rarr;</a></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <div align="center"></div>
+  <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-499533-1']);
-  _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-499533-1']);
+    _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
-</script>
+  </script>
 </body>
-</html>
 
+</html>
