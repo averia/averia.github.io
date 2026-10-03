@@ -5,13 +5,56 @@
 <title>%</title>
 
 <link href="../gb.css" rel="stylesheet" type="text/css" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+  .content-table {
+    width: 95%;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* Versión desktop: fotos, vídeos y texto encajados al mismo ancho */
+  @media screen and (min-width: 768px) {
+    .content-table img {
+      width: 100% !important;
+      height: auto !important;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .content-table iframe {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 16 / 9;
+      min-height: 540px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .content-table td {
+      box-sizing: border-box;
+      max-width: 960px;
+    }
+  }
+
+  /* Versión móvil */
+  @media screen and (max-width: 767px) {
+    .content-table img,
+    .content-table iframe {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 16 / 9;
+    }
+    .content-table td {
+      box-sizing: border-box;
+    }
+  }
+</style>
 </head>
 
 <body>
-<table width="600" border="0" align="center" bgcolor="#FFFFFF">
+<table border="0" align="center" bgcolor="#FFFFFF" class="content-table">
   <tr>
-    <td width="601"><img src="../imatges/contador/contador palma.jpg" width="604" height="400" alt="%" longdesc="../imatges/contador/contador palma.jpg" /></td>
+    <td align="center"><img src="../imatges/contador/contador palma.jpg" alt="%" longdesc="../imatges/contador/contador palma.jpg" /></td>
   </tr>
   <tr>
     <td><span class="text">Photo: @ David Bonet</span></td>
@@ -34,22 +77,22 @@
     </td>
   </tr>
   <tr>
-    <td class="Estilo1"><img src="/imatges/contador/contador_pau.jpg" width="600" height="400" alt="%_Pau" /></td>
+    <td class="Estilo1" align="center"><img src="/imatges/contador/contador_pau.jpg" alt="%_Pau" /></td>
   </tr>
   <tr>
     <td class="text">Photo: @ Mathieu Thomassin</td>
   </tr>
   <tr>
-    <td><iframe src="https://player.vimeo.com/video/78578915?title=0&byline=0&portrait=0" width="600" height="337,5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <td align="center"><iframe src="https://player.vimeo.com/video/78578915?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></td>
   </tr>
   <tr>
-    <td><img src="../imatges/contador/artium.jpg" width="604" height="238" alt="artium" longdesc="../imatges/contador/artium.jpg" /></td>
+    <td align="center"><img src="../imatges/contador/artium.jpg" alt="artium" longdesc="../imatges/contador/artium.jpg" /></td>
   </tr>
   <tr>
     <td><span class="text">Photo: @ Foto Quintas</span></td>
   </tr>
   <tr>
-    <td><img src="../imatges/contador/artium2.jpg" width="604" height="389" alt="%" longdesc="../imatges/contador/artium2.jpg" /></td>
+    <td align="center"><img src="../imatges/contador/artium2.jpg" alt="%" longdesc="../imatges/contador/artium2.jpg" /></td>
   </tr>
   <tr>
     <td align="center"><table width="200" border="0">
@@ -76,4 +119,3 @@
 </script>
 </body>
 </html>
-
