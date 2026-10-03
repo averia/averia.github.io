@@ -5,11 +5,51 @@
 <title>reloj solar</title>
 
 <link href="../gb.css" rel="stylesheet" type="text/css" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+  .content-table {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Versión desktop: vídeo e imágenes más grandes */
+  @media screen and (min-width: 768px) {
+    .content-table img {
+      width: 100% !important;
+      max-width: 960px;
+      height: auto !important;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .content-table iframe {
+      width: 100% !important;
+      max-width: 960px;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+      min-height: 540px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  /* Versión móvil */
+  @media screen and (max-width: 767px) {
+    .content-table img,
+    .content-table iframe {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+    }
+    .content-table td {
+      box-sizing: border-box;
+    }
+  }
+</style>
 </head>
 
 <body>
-<table width="594" border="0" align="center" cellspacing="0">
+<table border="0" align="center" cellspacing="0" class="content-table">
   <tr>
     <td align="center" bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/reloj solar/rellotge solar paret.jpg" alt="reloj solar" /></td>
   </tr>
@@ -17,7 +57,8 @@
     <td align="center" bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/reloj solar/reloj-solar.gif" alt="reloj solar" /></td>
   </tr>
   <tr>
-    <td align="center" bgcolor="#FFFFFF" class="Estilo1"><table width="604" border="0" cellpadding="0" cellspacing="0">
+    <td align="center" bgcolor="#FFFFFF" class="Estilo1">
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 604px; width: 100%;">
       <tr>
         <td width="135"><p class="title">Sundial</p>
           <p class="text">2010</p>
@@ -39,7 +80,7 @@ Black markers on the ground indicate the cardinal points in replacement of hours
     </table></td>
   </tr>
   <tr>
-    <td><iframe src="https://player.vimeo.com/video/32043879?title=0&byline=0&portrait=0" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <td align="center"><iframe src="https://player.vimeo.com/video/32043879?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></td>
   </tr>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><table width="200" border="0">
@@ -67,4 +108,3 @@ Black markers on the ground indicate the cardinal points in replacement of hours
 </script>
 </body>
 </html>
-
