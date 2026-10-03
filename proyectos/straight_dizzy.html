@@ -6,18 +6,57 @@
 
 <title>straight dizzy</title>
 <link href="../gb.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+  .content-table {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  /* Versión desktop: vídeo e imagen más grandes */
+  @media screen and (min-width: 768px) {
+    .content-table img {
+      width: 100% !important;
+      max-width: 960px;
+      height: auto !important;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .content-table iframe {
+      width: 100% !important;
+      max-width: 960px;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+      min-height: 540px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  /* Versión móvil */
+  @media screen and (max-width: 767px) {
+    .content-table img,
+    .content-table iframe {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+    }
+    .content-table td {
+      box-sizing: border-box;
+    }
+  }
+</style>
 </head>
 
 <body>
-<table width="481" border="0" align="center" cellspacing="0">
+<table border="0" align="center" cellspacing="0" class="content-table">
   <tr>
-    <td bgcolor="#FFFFFF" class="Estilo1"><img src="/imatges/dizzy/straight-dizzy.gif" width="768" height="576" alt="straight dizzy" longdesc="/imatges/dizzy/straight-dizzy.gif" /></td>
+    <td bgcolor="#FFFFFF" class="Estilo1" align="center"><img src="/imatges/dizzy/straight-dizzy.gif" alt="straight dizzy" longdesc="/imatges/dizzy/straight-dizzy.gif" /></td>
   </tr>
   <tr>
     <td align="center" bgcolor="#FFFFFF" class="Estilo1">
-      <table width="579" border="0" cellpadding="0" cellspacing="0">
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 579px; width: 100%;">
       <tr>
         <td width="17" align="left"><p class="title">Straight Dizzy</p>
           <p class="text">2014</p>
@@ -34,7 +73,7 @@
     </table></td>
   </tr>
   <tr>
-    <td align="center"><iframe src="https://player.vimeo.com/video/133833378?title=0&byline=0&portrait=0" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <td align="center"><iframe src="https://player.vimeo.com/video/133833378?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></td>
   </tr>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><table width="200" border="0">
@@ -62,4 +101,3 @@
 </script>
 </body>
 </html>
-
