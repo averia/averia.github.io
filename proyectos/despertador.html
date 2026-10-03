@@ -5,16 +5,57 @@
 <title>despertador</title>
 
 <link href="../gb.css" rel="stylesheet" type="text/css" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+  .content-table {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Versión desktop: vídeos e imagen más grandes */
+  @media screen and (min-width: 768px) {
+    .content-table img {
+      width: 100% !important;
+      max-width: 960px;
+      height: auto !important;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .content-table iframe {
+      width: 100% !important;
+      max-width: 960px;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+      min-height: 540px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  /* Versión móvil */
+  @media screen and (max-width: 767px) {
+    .content-table img,
+    .content-table iframe {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+    }
+    .content-table td {
+      box-sizing: border-box;
+    }
+  }
+</style>
 </head>
 
 <body>
-<table width="602" border="0" align="center" cellspacing="0">
+<table border="0" align="center" cellspacing="0" class="content-table">
   <tr>
-    <td bgcolor="#FFFFFF" class="Estilo1"><img src="../imatges/despertador/frames despertador2.jpg" width="600" /></td>
+    <td bgcolor="#FFFFFF" class="Estilo1" align="center"><img src="../imatges/despertador/frames despertador2.jpg" alt="despertador" /></td>
   </tr>
   <tr>
-    <td align="center" bgcolor="#FFFFFF" class="Estilo1"><table width="461" border="0" cellpadding="0" cellspacing="0">
+    <td align="center" bgcolor="#FFFFFF" class="Estilo1">
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 461px; width: 100%;">
       <tr>
         <td width="135"><p><strong>Alarm clock</strong></p>
           <p>2008 </p>
@@ -25,10 +66,11 @@
     </table></td>
   </tr>
   <tr>
-    <td><iframe src="https://player.vimeo.com/video/133836912?title=0&byline=0&portrait=0" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </tr>
+    <td align="center"><iframe src="https://player.vimeo.com/video/133836912?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></td>
+  </tr>
   <tr>
-    <td height="154" align="center" bgcolor="#FFFFFF" class="Estilo1"><table width="461" border="0" cellpadding="0" cellspacing="0">
+    <td align="center" bgcolor="#FFFFFF" class="Estilo1">
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 461px; width: 100%;">
       <tr>
         <td width="135"><p class="texto"><strong>Despertador</strong></p>
           <p align="left" class="texto">2008</p>
@@ -38,11 +80,9 @@
     </table></td>
   </tr>
   <tr>
-    <td align="center" valign="middle" bgcolor="#FFFFFF"><table border="0">
-      <tr>
-        <td><iframe src="https://player.vimeo.com/video/60102219?title=0&byline=0&portrait=0" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      </tr>
-    </table></td>
+    <td align="center" valign="middle" bgcolor="#FFFFFF">
+      <iframe src="https://player.vimeo.com/video/60102219?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </td>
   </tr>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><table width="200" border="0">
@@ -70,4 +110,3 @@
 </script>
 </body>
 </html>
-
