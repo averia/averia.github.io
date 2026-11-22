@@ -55,8 +55,7 @@ a:active {
 
 .Estilo1Negativo {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 11
-	px;
+	font-size: 11px;
 	font-style: italic;
 	color: #000000;
 	background-color: #CCCCCC;
@@ -91,7 +90,7 @@ a:active {
 	background-image: url(imatges/sofa/controles.jpg);
 }
 
-/* RESPONSIVE IMPRESICINDIBLES */
+/* RESPONSIVE IMPRESCINDIBLES */
 table {
 	max-width: 100% !important;
 }
