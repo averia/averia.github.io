@@ -1,14 +1,136 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta charset="UTF-8" />
 <title>le pendu</title>
-<link href="../gb.css" rel="stylesheet" type="text/css">
+<link href="../gb.css" rel="stylesheet" type="text/css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body bgcolor="#ffffff">
 <table border="0" align="center">
   <tr>
-    <td width="797"><p class="Estilo1">Obra realizada en Flash, que los navegadores actuales ya no pueden reproducir.</p></td>
+    <td align="center">
+      <canvas id="pendu" width="800" height="620" tabindex="0"
+        style="display:block;margin:0 auto;width:100%;max-width:800px;height:auto;touch-action:manipulation;outline:none"
+        role="img" aria-label="El Colgado (Le Pendu), carta del tarot, que se balancea como un p&eacute;ndulo. Pulsa el bot&oacute;n rojo &quot;Hit!&quot; para empujarlo."></canvas>
+      <script type="text/javascript">
+      /* Recreación en HTML5 de "le pendu" (Flash/ActionScript 2, 40 fps).
+         La física es la del script original: un péndulo que se amortigua. */
+      (function () {
+        var cv = document.getElementById('pendu'), ctx = cv.getContext('2d');
+        var W = 800, H = 620, FPS = 40;
+        var ORIGEN = { x: 400.9, y: 49.4 };           // punto de giro del péndulo
+        var BTN = { x: 771.0, y: 328.0, r: 23.2 };    // botón "Hit!"
+        var names = ['fondo', 'pendu', 'marco'], img = {}, loaded = 0;
+        names.forEach(function (n) {
+          var i = new Image();
+          i.onload = function () { if (++loaded === names.length) { draw(); } };
+          i.src = '../imatges/le pendu/' + n + '.webp';
+          img[n] = i;
+        });
+
+        // --- Estado del péndulo (variables del script original) ---
+        var rot = 0, velocidad = 0, peso = 0.15, resistencia = 0, CE = 0.1, subiendo; // subiendo: undefined al inicio
+
+        function norm(a) { while (a > 180) a -= 360; while (a <= -180) a += 360; return a; }
+
+        function step() {                              // onClipEvent (enterFrame)
+          if (CE < 10) {
+            if (rot > 0) velocidad = velocidad + peso - resistencia;
+            if (rot < 0) velocidad = velocidad + peso + resistencia;
+            rot = norm(rot + velocidad);
+            if (rot > 0 && rot < 90 && peso > 0) { rot = 0.1; peso *= -1; CE *= 1.1; subiendo = true; }
+            if (rot < 0 && rot > -90 && peso < 0) { rot = -0.1; peso *= -1; CE *= 1.1; subiendo = true; }
+            if (rot > 90 && peso > 0) { rot = 180; peso *= -1; CE = 0.1; subiendo = false; resistencia = 0; }
+            if (rot < -90 && peso < 0) { rot = -180; peso *= -1; CE = 0.1; subiendo = false; resistencia = 0; }
+            if (subiendo === true) resistencia = 0.04;
+            if (velocidad < 0.2 && velocidad > -0.2) { subiendo = false; resistencia = 0; }
+          } else {
+            rot = 0;
+          }
+        }
+
+        function hit() {                               // on (release) del botón
+          if (rot < 30 && rot > -30) {
+            CE = 1; subiendo = true; rot += -0.1; velocidad += -3;
+          }
+        }
+
+        // --- Dibujo ---
+        var over = false, down = false;
+        function circle(x, y, r, fill) { ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fillStyle = fill; ctx.fill(); }
+        function drawButton() {
+          ctx.save(); ctx.translate(BTN.x, BTN.y); ctx.scale(0.8, 0.8);
+          if (over || down) circle(0, 0, 27, down ? '#ebe969' : '#ffff99');  // halo al pasar el cursor
+          circle(0, 0, 29, over || down ? '#f5b4b4' : '#f29d9d');
+          var g = ctx.createRadialGradient(-14, -10, 0, -14, -10, 38);
+          g.addColorStop(0, '#ed7878'); g.addColorStop(1, '#e74343');
+          circle(0, 0, 24, g);
+          circle(0, 0, 22, '#bc1818');
+          var h = ctx.createRadialGradient(-6, -5.8, 0, -6, -5.8, 21);
+          h.addColorStop(0, over || down ? '#f5b4b4' : '#ffffff'); h.addColorStop(1, '#e74343');
+          circle(0, 0, 21, h);
+          ctx.fillStyle = '#000'; ctx.font = '10px Verdana, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('Hit!', 0, 1);
+          ctx.restore();
+        }
+        function fmt(v) { return v === undefined ? '' : String(v); }
+        function drawReadouts() {
+          var rows = [
+            ['Rotación:', Math.round(rot)],
+            ['Peso:', peso],
+            ['Velocidad:', Math.round(velocidad * 10) / 10],
+            ['CE:', Math.round(CE * 10) / 10],
+            ['Subiendo:', subiendo],
+            ['Resisten.:', resistencia]
+          ];
+          ctx.fillStyle = '#000'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+          for (var i = 0; i < rows.length; i++) {
+            var y = 268.7 + i * 24;
+            ctx.font = 'bold 11px Arial, Helvetica, sans-serif'; ctx.fillText(rows[i][0], 580, y);
+            ctx.font = '11px Arial, Helvetica, sans-serif'; ctx.fillText(fmt(rows[i][1]), 644, y);
+          }
+        }
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+          ctx.drawImage(img.fondo, 228.45, 6.85, 343.1, 614.3);
+          ctx.save();
+          ctx.translate(ORIGEN.x, ORIGEN.y); ctx.rotate(rot * Math.PI / 180); ctx.scale(0.8, 0.8);
+          ctx.drawImage(img.pendu, -222.45, -69.3, 429, 768);
+          ctx.restore();
+          drawButton();
+          drawReadouts();
+          ctx.drawImage(img.marco, 228.45, 6.85, 343.1, 614.3);
+        }
+
+        // --- Bucle a 40 fps como el original ---
+        var last = 0, acc = 0, FRAME = 1000 / FPS;
+        function loop(now) {
+          if (loaded === names.length) {
+            if (!last) last = now;
+            acc += Math.min(now - last, 250); last = now;
+            while (acc >= FRAME) { step(); acc -= FRAME; }
+            draw();
+          }
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        // --- Interacción ---
+        function pos(e) {
+          var r = cv.getBoundingClientRect();
+          return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height };
+        }
+        function inBtn(p) { var dx = p.x - BTN.x, dy = p.y - BTN.y; return dx * dx + dy * dy <= BTN.r * BTN.r; }
+        cv.addEventListener('pointermove', function (e) { over = inBtn(pos(e)); cv.style.cursor = over ? 'pointer' : 'default'; });
+        cv.addEventListener('pointerleave', function () { over = false; down = false; });
+        cv.addEventListener('pointerdown', function (e) { if (inBtn(pos(e))) { down = true; } });
+        cv.addEventListener('pointerup', function (e) { if (down && inBtn(pos(e))) hit(); down = false; });
+        cv.addEventListener('keydown', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); hit(); } });
+      })();
+      </script>
+    </td>
   </tr>
   <tr>
     <td align="center"><table width="200" border="0">
@@ -20,9 +142,5 @@
     </table></td>
   </tr>
 </table>
-<!--url's used in the movie-->
-<!--text used in the movie-->
-<!-- saved from url=(0013)about:internet -->
 </body>
 </html>
-
