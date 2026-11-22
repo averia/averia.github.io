@@ -20,15 +20,15 @@
         var W = cv.width, H = cv.height;
         var CX = 480, CY = 430, RX = 290, RY = 150;   // zona del corazón
         var PERIOD = 1.04;                             // duración del latido (s)
-        var REST = 2;                                  // fotograma en reposo
-        var imgs = [], loaded = 0;
-        for (var i = 1; i <= 5; i++) {
+        var REST = 0;                                  // fotograma en reposo
+        var NF = 12, imgs = [], loaded = 0;
+        for (var i = 1; i <= NF; i++) {
           var im = new Image();
-          im.onload = function () { if (++loaded === 5) draw(1, REST); };
-          im.src = '../imatges/hb/hb' + i + '.jpg';
+          im.onload = function () { if (++loaded === NF) draw(1, REST); };
+          im.src = '../imatges/hb/hb' + (i < 10 ? '0' : '') + i + '.jpg';
           imgs.push(im);
         }
-        var audio = new Audio('../imatges/hb/latido.mp3');
+        var audio = new Audio(); audio.src = audio.canPlayType('audio/mpeg') ? '../imatges/hb/latido.mp3' : '../imatges/hb/latido.ogg';
         audio.preload = 'auto';
 
         var mask = document.createElement('canvas'); mask.width = W; mask.height = H;
@@ -72,7 +72,7 @@
             if (hover || tap) { beat(); return; }
             running = false; draw(1, REST); return;
           }
-          draw(pulse(t), Math.min(4, Math.floor(t / PERIOD * 5)));
+          draw(pulse(t), Math.min(NF - 1, Math.floor(t / PERIOD * NF)));
           requestAnimationFrame(tick);
         }
         function inHeart(e) {
