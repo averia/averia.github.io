@@ -27,16 +27,47 @@
           im.src = '../imatges/hb/hb' + (i < 10 ? '0' : '') + i + '.jpg';
           imgs.push(im);
         }
-        var audio = new Audio();
-        audio.src = audio.canPlayType('audio/mpeg') ? '../imatges/hb/latido.mp3' : '../imatges/hb/latido.ogg';
-        audio.preload = 'auto';
+        // Audio: se desbloquea con la primera interacción (clic, toque o tecla) en esta página
+        // o en el menú/marco que la contiene, y a partir de entonces suena en cada latido.
+        var AC = window.AudioContext || window.webkitAudioContext, actx = null, buf = null;
+        var el = new Audio();
+        el.src = el.canPlayType('audio/mpeg') ? '../imatges/hb/latido.mp3' : '../imatges/hb/latido.ogg';
+        el.preload = 'auto';
+        function unlock() {
+          try {
+            if (AC && !actx) {
+              actx = new AC();
+              fetch(el.src).then(function (r) { return r.arrayBuffer(); })
+                .then(function (a) { return new Promise(function (ok, ko) { actx.decodeAudioData(a, ok, ko); }); })
+                .then(function (b) { buf = b; }).catch(function () {});
+            }
+            if (actx && actx.state !== 'running') actx.resume();
+            var p = el.play(); if (p && p.then) p.then(function () { el.pause(); el.currentTime = 0; }).catch(function () {});
+          } catch (e) {}
+        }
+        var evs = ['pointerdown', 'mousedown', 'touchstart', 'touchend', 'click', 'keydown'];
+        function listen(w) {
+          try { evs.forEach(function (e) { w.addEventListener(e, unlock, { passive: true, capture: true }); }); } catch (e) {}
+        }
+        listen(window);
+        try { if (window.parent && window.parent !== window) { listen(window.parent); listen(window.top); } } catch (e) {}
+        try { if (navigator.userActivation && navigator.userActivation.hasBeenActive) unlock(); } catch (e) {}
+        function playBeat() {
+          try {
+            if (actx && actx.state === 'running' && buf) {
+              var src = actx.createBufferSource(); src.buffer = buf; src.connect(actx.destination); src.start(0);
+            } else {
+              el.currentTime = 0; var p = el.play(); if (p && p.catch) p.catch(function () {});
+            }
+          } catch (e) {}
+        }
 
         function show(f) { ctx.drawImage(imgs[f], 0, 0, W, H); }
 
         var hover = false, tap = false, running = false, start = 0;
         function beat() {
           running = true; start = performance.now();
-          try { audio.currentTime = 0; var p = audio.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {}
+          playBeat();
           requestAnimationFrame(tick);
         }
         function tick(now) {
