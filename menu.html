@@ -17,9 +17,28 @@
       if (restore) selObj.selectedIndex=0;
     }
 
+    function currentProjectIndex() {
+      var sel = document.getElementById('proyectos2');
+      try {
+        var p = decodeURIComponent(parent.frames['main'].location.pathname);
+        var m = p.match(/(proyectos\/[^\/]+|[^\/]+)$/);
+        for (var i = 0; i < sel.options.length; i++) {
+          if (m && sel.options[i].value === m[1]) return i;
+        }
+      } catch (e) {}
+      return sel.selectedIndex;
+    }
+
+    function syncMenu() {
+      var sel = document.getElementById('proyectos2');
+      var i = currentProjectIndex();
+      if (i !== sel.selectedIndex && sel.options[i] && sel.options[i].value !== 'main.html') sel.selectedIndex = i;
+    }
+    setInterval(syncMenu, 500);
+
     function navigateProjects(direction) {
       var sel = document.getElementById('proyectos2');
-      var newIndex = sel.selectedIndex + direction;
+      var newIndex = currentProjectIndex() + direction;
       if (newIndex >= 0 && newIndex < sel.options.length) {
         sel.selectedIndex = newIndex;
         MM_jumpMenu('parent.frames[\'main\']', sel, 0);
@@ -96,19 +115,6 @@
       <p class="Estilo1">&nbsp;</p>
     </div>
   </form>
-  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-499533-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = 'https://ssl.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-  </script>
 </body>
 
 </html>
