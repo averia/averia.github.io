@@ -10,17 +10,19 @@
 <table border="0" align="center">
   <tr>
     <td align="center">
-      <canvas id="pendu" width="800" height="620" tabindex="0"
-        style="display:block;margin:0 auto;width:100%;max-width:800px;height:auto;touch-action:manipulation;outline:none"
+      <canvas id="pendu" width="1280" height="620" tabindex="0"
+        style="display:block;margin:0 auto;width:100%;max-width:1280px;height:auto;touch-action:manipulation;outline:none"
         role="img" aria-label="El Colgado (Le Pendu), carta del tarot, que se balancea como un p&eacute;ndulo. Pulsa el bot&oacute;n rojo &quot;Hit!&quot; para empujarlo."></canvas>
       <script type="text/javascript">
       /* Recreación en HTML5 de "le pendu" (Flash/ActionScript 2, 40 fps).
          La física es la del script original: un péndulo que se amortigua. */
       (function () {
         var cv = document.getElementById('pendu'), ctx = cv.getContext('2d');
-        var W = 800, H = 620, FPS = 40;
+        var W = 1280, H = 620, FPS = 40;
+        var OFFX = 180;                                // margen a cada lado para que el péndulo no se corte
+        var PDX = 270;                                 // desplazamiento del panel y del botón, fuera del recorrido del péndulo
         var ORIGEN = { x: 400.9, y: 49.4 };           // punto de giro del péndulo
-        var BTN = { x: 771.0, y: 328.0, r: 23.2 };    // botón "Hit!"
+        var BTN = { x: 771.0 + 270, y: 328.0, r: 23.2 };    // botón "Hit!"
         var names = ['fondo', 'pendu', 'marco'], img = {}, loaded = 0;
         names.forEach(function (n) {
           var i = new Image();
@@ -87,13 +89,14 @@
           ctx.fillStyle = '#000'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
           for (var i = 0; i < rows.length; i++) {
             var y = 268.7 + i * 24;
-            ctx.font = 'bold 11px Arial, Helvetica, sans-serif'; ctx.fillText(rows[i][0], 580, y);
-            ctx.font = '11px Arial, Helvetica, sans-serif'; ctx.fillText(fmt(rows[i][1]), 644, y);
+            ctx.font = 'bold 11px Arial, Helvetica, sans-serif'; ctx.fillText(rows[i][0], 580 + PDX, y);
+            ctx.font = '11px Arial, Helvetica, sans-serif'; ctx.fillText(fmt(rows[i][1]), 644 + PDX, y);
           }
         }
         function draw() {
           ctx.clearRect(0, 0, W, H);
           ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+          ctx.save(); ctx.translate(OFFX, 0);
           ctx.drawImage(img.fondo, 228.45, 6.85, 343.1, 614.3);
           ctx.save();
           ctx.translate(ORIGEN.x, ORIGEN.y); ctx.rotate(rot * Math.PI / 180); ctx.scale(0.8, 0.8);
@@ -102,6 +105,7 @@
           drawButton();
           drawReadouts();
           ctx.drawImage(img.marco, 228.45, 6.85, 343.1, 614.3);
+          ctx.restore();
         }
 
         // --- Bucle a 40 fps como el original ---
@@ -120,7 +124,7 @@
         // --- Interacción ---
         function pos(e) {
           var r = cv.getBoundingClientRect();
-          return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height };
+          return { x: (e.clientX - r.left) * W / r.width - OFFX, y: (e.clientY - r.top) * H / r.height };
         }
         function inBtn(p) { var dx = p.x - BTN.x, dy = p.y - BTN.y; return dx * dx + dy * dy <= BTN.r * BTN.r; }
         cv.addEventListener('pointermove', function (e) { over = inBtn(pos(e)); cv.style.cursor = over ? 'pointer' : 'default'; });
